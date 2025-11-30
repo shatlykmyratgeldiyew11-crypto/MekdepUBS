@@ -1,7 +1,7 @@
 // script.js
 let questions = [
   {
-    prompt: "Diñe dodak çekimlisi bolan sözi tapyñ",
+    prompt: "Diňe dodak çekimlisi bolan sözi tapyñ",
     options: ["göle", "balyk", "oglan", "çukur"],
     answer: "çukur",
   },
@@ -20,14 +20,9 @@ let questions = [
     answer: "Ýöneliş düşüm",
   },
   {
-    prompt: "Sypatlar nähili soraglara jogap bolÿarlar ?",
+    prompt: "Sypatlar nähili soraglara jogap bolýarlar ?",
     options: ["nädip", "nähili, neneñsi, nätüÿsli?", "kim, näme, nire"],
     answer: "nähili, neneñsi, nätüÿsli?",
-  },
-  {
-    prompt: "English",
-    options: ["Indiki"],
-    answer: "Indiki",
   },
   {
     prompt: "The children …. in the yard",
@@ -256,5 +251,6 @@ submitBtn.onclick = saveHighscore;
 // Start quiz after clicking start quiz
 
 startBtn.onclick = quizStart;
+
 
 

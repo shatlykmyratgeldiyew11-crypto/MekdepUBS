@@ -31,7 +31,7 @@ let questions = [
   },
   {
     prompt: "The children …. in the yard",
-    option: ["are playing", "is playing", "am playing"],
+    options: ["are playing", "is playing", "am playing"],
     answer: "are playing",
   },
   {
@@ -256,3 +256,4 @@ submitBtn.onclick = saveHighscore;
 // Start quiz after clicking start quiz
 
 startBtn.onclick = quizStart;
+

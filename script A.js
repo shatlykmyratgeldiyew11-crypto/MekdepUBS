@@ -6,7 +6,7 @@ let questions = [
     answer: "çukur",
   },
   {
-    prompt: "-ym, -im, -um, -üm, -m haýsy ýöňkemäniň goşulma¬sy?",
+    prompt: "-ym, -im, -um, -üm, -m haýsy ýöňkemäniň goşulmasy?",
     options: [
       "Menlik ýöňkemäniň goşulmasy",
       "Senlik ýöňkemäniň goşulmasy",
@@ -57,7 +57,7 @@ let questions = [
   {
     prompt: "Звонкие согласные звуки это-",
     options: ["с, ж, г, ш, ф, п", "б, в, г, д, ж, з", "п, ф, к, т, ш, с"],
-    answer: "",
+    answer: "б, в, г, д, ж, з",
   },
   {
     prompt: "Сколько букв в русском алфавите",
@@ -65,21 +65,21 @@ let questions = [
     answer: "33",
   },
   {
-    prompt: "Личные местоимения ",
+    prompt: "Личные местоимения",
     options: [
-      "Я, ТЫ, ОН, ОНО, МЫ, ВЫ, ОНИ",
+      "Я, ТЫ, ОН, ОНА, ОНО, МЫ, ВЫ, ОНИ",
       "МОЙ, ТВОЙ, МОЁ, ТВОЁ",
-      "ЕЁ, ЕГО, ИХ,",
+      "ЕЁ, ЕГО, ИХ",
     ],
-    answer: "МОЙ, ТВОЙ, МОЁ, ТВОЁ",
+    answer: "Я, ТЫ, ОН, ОНА, ОНО, МЫ, ВЫ, ОНИ",
   },
   {
     prompt: "Состав слова это-",
-    options: ["Определение", " Слог ", "Подлежащее и сказуемое"],
+    options: ["Определение", "Слог", "Подлежащее и сказуемое"],
     answer: "Подлежащее и сказуемое",
   },
   {
-    prompt: ".Главные члены предложение это-",
+    prompt: "Главные члены предложения это-",
     options: ["Определениe", "Слог", "Подлежащее и сказуемое"],
     answer: "Подлежащее и сказуемое",
   },
@@ -99,9 +99,9 @@ let questions = [
     answer: "sagdyn bolmak üçin",
   },
   {
-    prompt: " Bedenterbiýe we sport näme üçin gerek?",
+    prompt: "Bedenterbiýe we sport näme üçin gerek?",
     options: [
-      " owadan bolmak üçin",
+      "owadan bolmak üçin",
       "saglygyňy berkitmek üçin",
       "bedeniňi işe taýýarlamak üçin",
     ],
@@ -113,17 +113,17 @@ let questions = [
     answer: "25 • 7 > 160 : 2",
   },
   {
-    prompt: "Haýsysy  dogry",
+    prompt: "Haýsysy dogry",
     options: [
-      "100 sm = 1 m hem 1 sag = 60 min",
+      "100 sm = 1m hem 1 kg = 1000 g",
       "100 sm = 10 m hem 1 sag = 60 s",
-      "100 sm = 1m hem 1 sag = 60 min",
+      "100 sm = 1 km hem 1 sag = 60 min",
     ],
     answer: "100 sm = 1m hem 1 kg = 1000 g",
   },
   {
     prompt:
-      " Birinji gün ýük maşyny ekin meýdanyndan 360 sentner kelem äkitdi, bu bolsa,ikinji gündäkiden 50 sentner az. Maşyn iki günde näçe sentner kelem äkitdi",
+      "Birinji gün ýük maşyny ekin meýdanyndan 360 sentner kelem äkitdi, bu bolsa, ikinji gündäkiden 50 sentner az. Maşyn iki günde näçe sentner kelem äkitdi",
     options: ["670 sentner", "770 sentner", "410 sentner"],
     answer: "670 sentner",
   },
@@ -256,4 +256,5 @@ submitBtn.onclick = saveHighscore;
 // Start quiz after clicking start quiz
 
 startBtn.onclick = quizStart;
+
 

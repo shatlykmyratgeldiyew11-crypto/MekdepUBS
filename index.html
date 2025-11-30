@@ -1,0 +1,71 @@
+<!--index.html-->
+
+<!DOCTYPE html>
+<html lang="tk-TM">
+  <head>
+    <link rel="stylesheet" href="./style.css" />
+    <title>UBS 4-nji synpyň UBS</title>
+  </head>
+
+  <body>
+    <div class="containerNew">
+      <header>
+        <div>
+          <form action="./highscore.html">
+            <button class="scores-header" id="view-high-scores">
+              Synagdan geçenler.
+            </button>
+          </form>
+        </div>
+
+        <div class="timer">
+          <p>
+            Wagyt/baha:
+            <span id="timer"> 0 </span>
+          </p>
+        </div>
+      </header>
+
+      <main class="quiz">
+        <div id="quiz-start">
+          <div class="landing" id="start-screen">
+            <h1 id="top">Bilimiňi syna!</h1>
+            <h1 id="and">4-nji synp UBS</h1>
+            <h1>Umumy bilim synagy!</h1>
+            <h1>4-nji synpyň dürli dersleri boýunça synag.</h1>
+            <p>
+              <strong>
+                Indiki sorglara jogap bermäge synanyşyň! Wagtyňyz çäklidigini
+                unutmaň!Şu UBS-de 5 sany dersler bar.Türkmen dili(4 sorag),Iňlis
+                dili(5 sorag),Rus dili(5 sorag),Ý.D.E(3 sorag),Matematika(3
+                sorag).
+              </strong>
+            </p>
+            <button id="start">Synaga başlaň!</button>
+          </div>
+        </div>
+
+        <div class="hide" id="questions">
+          <h2 id="question-words"></h2>
+          <div class="options" id="options"></div>
+        </div>
+
+        <div class="hide" id="quiz-end">
+          <h2>Üstünlik!</h2>
+          <p>
+            Siziň gazanan netijäňiz:
+            <span id="score-final"> </span>
+          </p>
+          <p>
+            Öz adyňyzy giriziň:
+            <input type="text" id="name" max="3" />
+            <button id="submit-score">Barla</button>
+          </p>
+        </div>
+
+        <div id="feedback" class="feedback hide"></div>
+      </main>
+    </div>
+    <script src="./script A.js"></script>
+  </body>
+</html>

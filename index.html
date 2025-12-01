@@ -1,72 +1,93 @@
-<!--index.html-->
+<!--index.html--><!DOCTYPE html>
+<html lang="tk">
+<head>
+    <meta charset="UTF-8">
+    <title>4-nji synp Test Ulgamy</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .question { margin-bottom: 15px; }
+        .result { margin-top: 20px; font-size: 22px; font-weight: bold; }
+    </style>
+</head>
+<body>
 
-<!DOCTYPE html>
-<html lang="tk-TM">
-  <head>
-    <link rel="stylesheet" href="./Style.css" />
-    <title>UBS 4-nji synpyň UBS</title>
-  </head>
+<h1>4-nji synp TEST — A / B</h1>
 
-  <body>
-    <div class="containerNew">
-      <header>
-        <div>
-          <form action="./highscore.html">
-            <button class="scores-header" id="view-high-scores">
-              Synagdan geçenler.
-            </button>
-          </form>
-        </div>
+<label>Test görnüşi saýlaň:</label>
+<select id="testType">
+    <option value="A">Test A</option>
+    <option value="B">Test B</option>
+</select>
 
-        <div class="timer">
-          <p>
-            Wagyt/baha:
-            <span id="timer"> 0 </span>
-          </p>
-        </div>
-      </header>
+<button onclick="startTest()">Başla</button>
 
-      <main class="quiz">
-        <div id="quiz-start">
-          <div class="landing" id="start-screen">
-            <h1 id="top">Bilimiňi syna!</h1>
-            <h1 id="and">4-nji synp UBS</h1>
-            <h1>Umumy bilim synagy!</h1>
-            <h1>4-nji synpyň dürli dersleri boýunça synag.</h1>
-            <p>
-              <strong>
-                Indiki sorglara jogap bermäge synanyşyň! Wagtyňyz çäklidigini
-                unutmaň!Şu UBS-de 5 sany dersler bar.Türkmen dili(4 sorag),Iňlis
-                dili(5 sorag),Rus dili(5 sorag),Ý.D.E(3 sorag),Matematika(3
-                sorag).
-              </strong>
-            </p>
-            <button id="start">Synaga başlaň!</button>
-          </div>
-        </div>
+<div id="testArea"></div>
+<div id="resultArea"></div>
 
-        <div class="hide" id="questions">
-          <h2 id="question-words"></h2>
-          <div class="options" id="options"></div>
-        </div>
+<script>
+const answersA = {
+    1:"a",2:"b",3:"a",4:"b",5:"a",6:"a",7:"a",8:"b",9:"c",
+    10:"В",11:"А",12:"Б",13:"В",14:"А",
+    15:"ç",16:"ç",17:"b",18:"b",19:"ç",20:"a"
+};
 
-        <div class="hide" id="quiz-end">
-          <h2>Üstünlik!</h2>
-          <p>
-            Siziň gazanan netijäňiz:
-            <span id="score-final"> </span>
-          </p>
-          <p>
-            Öz adyňyzy giriziň:
-            <input type="text" id="name" max="3" />
-            <button id="submit-score">Barla</button>
-          </p>
-        </div>
+const answersB = {
+    1:"a",2:"a",3:"a",4:"b",5:"a",6:"a",7:"b",8:"c","9":"Shall",
+    10:"Б",11:"В",12:"А",13:"А",14:"В",
+    15:"ç",16:"ç",17:"b",18:"b",19:"ç",20:"a"
+};
 
-        <div id="feedback" class="feedback hide"></div>
-      </main>
-    </div>
-    <script src="./script A.js"></script>
-  </body>
+let currentAnswers = {};
+let startTime;
+
+function startTest() {
+    const type = document.getElementById("testType").value;
+    currentAnswers = (type === "A") ? answersA : answersB;
+
+    startTime = new Date();
+
+    let html = "<h2>"+type+" Test başlady</h2>";
+    let q = 1;
+
+    for (let i in currentAnswers) {
+        html += `
+            <div class='question'>
+                <label>${q}) Jogap ýaz:</label>
+                <input type='text' id='q${q}' />
+            </div>
+        `;
+        q++;
+    }
+
+    html += `<button onclick="finishTest()">Testi tamamla</button>`;
+    document.getElementById("testArea").innerHTML = html;
+}
+
+function finishTest() {
+    let correct = 0;
+    let q = 1;
+
+    for (let key in currentAnswers) {
+        const userAnswer = document.getElementById("q"+q).value.trim();
+        if (userAnswer.toLowerCase() === currentAnswers[key].toLowerCase()) {
+            correct++;
+        }
+        q++;
+    }
+
+    const endTime = new Date();
+    const totalSeconds = Math.floor((endTime - startTime) / 1000);
+
+    document.getElementById("resultArea").innerHTML =
+        `<div class='result'>
+            Netije: ${correct} / 20 bal<br>
+            Gutaran wagty: ${endTime.toLocaleTimeString()}<br>
+            Test wagty: ${totalSeconds} sekunt
+        </div>`;
+}
+</script>
+
+</body>
 </html>
+
 

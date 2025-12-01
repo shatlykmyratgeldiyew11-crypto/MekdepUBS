@@ -4,7 +4,7 @@
 const testA = [
     {q:"1. Türkmen dilinde näçe sany çekimli we näçe sany çekimsiz harp bar?",
      a:{a:"8 çekimli, 21 çekimsiz", b:"9 çekimli, 22 çekimsiz", ç:"9 çekimli, 21 çekimsiz"},
-     correct:"a"},
+     correct:"ç"},
 
     {q:"2. -a, -e, -na, -ne haýsy düşümiň goşulmasy?",
      a:{a:"Eýelik düşümiň", b:"Ýöneliş düşümiň", ç:"Ýeňiş düşümiň"},
@@ -158,5 +158,6 @@ function finishTest(){
 
     document.getElementById("result").innerHTML = html;
 }
+
 
 

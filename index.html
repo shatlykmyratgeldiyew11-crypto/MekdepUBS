@@ -1,92 +1,353 @@
-<!--index.html--><!DOCTYPE html>
+<!--index.html--><!DOCTYPE html><!DOCTYPE html>
 <html lang="tk">
 <head>
-    <meta charset="UTF-8">
-    <title>4-nji synp Test Ulgamy</title>
-    <style>
-        body { font-family: Arial; padding: 20px; }
-        .question { margin-bottom: 15px; }
-        .result { margin-top: 20px; font-size: 22px; font-weight: bold; }
-    </style>
+  <meta charset="utf-8" />
+  <title>4-nji synp TEST — A / B</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    /* ===== Global ===== */
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --accent:#2b6df6;
+      --muted:#6b7280;
+      --success:#16a34a;
+      --danger:#ef4444;
+      --glass: rgba(43,109,246,0.08);
+      --radius:12px;
+      --maxw:920px;
+      --mono: "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: var(--mono);
+      background: linear-gradient(180deg, var(--bg) 0%, #eef3fb 100%);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:30px 16px;
+      box-sizing:border-box;
+    }
+
+    .container{
+      max-width: var(--maxw);
+      margin: 0 auto;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    header h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:0.2px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow: 0 6px 20px rgba(15,23,42,0.06);
+      padding:18px;
+      margin-bottom:18px;
+    }
+
+    .controls{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    select, button {
+      padding:10px 14px;
+      border-radius:10px;
+      border:1px solid rgba(15,23,42,0.08);
+      font-size:14px;
+      background:white;
+      outline:none;
+    }
+
+    button {
+      cursor:pointer;
+      background: linear-gradient(180deg,var(--accent), #1f57d9);
+      color:white;
+      border: none;
+      box-shadow: 0 6px 18px rgba(43,109,246,0.18);
+      transition: transform 120ms ease, box-shadow 120ms ease;
+    }
+
+    button:hover{ transform: translateY(-2px); }
+    button.secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px dashed rgba(43,109,246,0.14);
+      box-shadow:none;
+    }
+
+    /* Test area */
+    #testArea { margin-top:16px; }
+
+    .question{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      padding:12px;
+      border-radius:10px;
+      border:1px solid rgba(15,23,42,0.03);
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(250,252,255,0.6));
+      margin-bottom:10px;
+    }
+
+    .question label{
+      min-width:60px;
+      font-weight:600;
+      color: #0f172a;
+    }
+
+    .question input[type="text"]{
+      flex:1;
+      padding:8px 10px;
+      border-radius:8px;
+      border:1px solid rgba(15,23,42,0.06);
+      font-size:14px;
+    }
+
+    .small{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .result{
+      margin-top:16px;
+      padding:14px;
+      border-radius:10px;
+      display:flex;
+      gap:14px;
+      align-items:center;
+      justify-content:space-between;
+      background: linear-gradient(90deg, rgba(22,163,74,0.06), rgba(0,0,0,0.01));
+      border:1px solid rgba(22,163,74,0.12);
+    }
+
+    .badge{
+      background: var(--glass);
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:700;
+      color:var(--accent);
+    }
+
+    .meta{
+      color:var(--muted);
+      font-size:13px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    footer{
+      margin-top:18px;
+      font-size:13px;
+      color:var(--muted);
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    /* Responsive */
+    @media (max-width:640px){
+      .question{ flex-direction:column; align-items:flex-start; }
+      .question label{ min-width:unset; }
+      .controls{ flex-direction:column; align-items:stretch; }
+      button{ width:100%; }
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <div class="card" style="padding:10px 12px;">
+        <strong>🔨🤖🔧 Git Expert — Test Ulgamy</strong>
+      </div>
+      <div>
+        <h1>4-nji synp TEST — A / B</h1>
+        <div class="small">Soraglara jogap ýaz — soňra "Testi tamamla" düwmesine basyň.</div>
+      </div>
+    </header>
 
-<h1>4-nji synp TEST — A / B</h1>
+    <div class="card">
+      <div class="controls">
+        <label for="testType" class="small">Test görnüşi:</label>
+        <select id="testType">
+          <option value="A">Test A</option>
+          <option value="B">Test B</option>
+        </select>
 
-<label>Test görnüşi saýlaň:</label>
-<select id="testType">
-    <option value="A">Test A</option>
-    <option value="B">Test B</option>
-</select>
+        <button id="startBtn" onclick="startTest()">Başla</button>
+        <button class="secondary" onclick="loadLast()">Soňky netije</button>
+        <div style="margin-left:auto" class="small">JavaScript + localStorage</div>
+      </div>
 
-<button onclick="startTest()">Başla</button>
+      <div id="testArea"></div>
+    </div>
 
-<div id="testArea"></div>
-<div id="resultArea"></div>
+    <div id="resultContainer"></div>
 
-<script>
-const answersA = {
-    1:"a",2:"b",3:"a",4:"b",5:"a",6:"a",7:"a",8:"b",9:"c",
-    10:"В",11:"А",12:"Б",13:"В",14:"А",
-    15:"ç",16:"ç",17:"b",18:"b",19:"ç",20:"a"
-};
+    <footer>
+      <div>© Test ulgamy — 2025</div>
+      <div class="small">Islegiňize görä hyzmaty giňeldip bolar — soraglaryň awtomat goşulmagy, PDF, we ş.m.</div>
+    </footer>
+  </div>
 
-const answersB = {
-    1:"a",2:"a",3:"a",4:"b",5:"a",6:"a",7:"b",8:"c","9":"Shall",
-    10:"Б",11:"В",12:"А",13:"А",14:"В",
-    15:"ç",16:"ç",17:"b",18:"b",19:"ç",20:"a"
-};
+  <script>
+    // ======== jogaplar (A we B) ========
+    const answersA = {
+      1:"a",2:"b",3:"a",4:"b",5:"a",6:"a",7:"a",8:"b",9:"c",
+      10:"В",11:"А",12:"Б",13:"В",14:"А",
+      15:"ç",16:"ç",17:"b",18:"b",19:"ç",20:"a"
+    };
 
-let currentAnswers = {};
-let startTime;
+    const answersB = {
+      1:"a",2:"a",3:"a",4:"b",5:"a",6:"a",7:"b",8:"c",9:"Shall",
+      10:"Б",11:"В",12:"А",13:"А",14:"В",
+      15:"ç",16:"ç",17:"b",18:"b",19:"ç",20:"a"
+    };
 
-function startTest() {
-    const type = document.getElementById("testType").value;
-    currentAnswers = (type === "A") ? answersA : answersB;
+    let currentAnswers = {};
+    let startTime = null;
 
-    startTime = new Date();
+    function startTest(){
+      const type = document.getElementById("testType").value;
+      currentAnswers = (type === "A") ? answersA : answersB;
+      startTime = new Date();
 
-    let html = "<h2>"+type+" Test başlady</h2>";
-    let q = 1;
-
-    for (let i in currentAnswers) {
+      const area = document.getElementById("testArea");
+      let html = `<h3 style="margin-top:14px">Test ${type} — Jogaplary giriziň</h3>`;
+      let qnum = 1;
+      for (let key in currentAnswers){
         html += `
-            <div class='question'>
-                <label>${q}) Jogap ýaz:</label>
-                <input type='text' id='q${q}' />
-            </div>
+          <div class="question">
+            <label>${qnum}.</label>
+            <input type="text" id="q${qnum}" placeholder="A, B, C ýa-da degişli söz..." aria-label="Question ${qnum}" />
+          </div>
         `;
-        q++;
+        qnum++;
+      }
+      html += `<div style="margin-top:8px"><button onclick="finishTest()">Testi tamamla</button></div>`;
+      area.innerHTML = html;
+
+      // Clear previous result area
+      document.getElementById("resultContainer").innerHTML = "";
     }
 
-    html += `<button onclick="finishTest()">Testi tamamla</button>`;
-    document.getElementById("testArea").innerHTML = html;
-}
+    function finishTest(){
+      if (!startTime){
+        alert("Ilki başla düwmesine basyň.");
+        return;
+      }
 
-function finishTest() {
-    let correct = 0;
-    let q = 1;
-
-    for (let key in currentAnswers) {
-        const userAnswer = document.getElementById("q"+q).value.trim();
-        if (userAnswer.toLowerCase() === currentAnswers[key].toLowerCase()) {
-            correct++;
+      let correct = 0;
+      let q = 1;
+      for (let key in currentAnswers){
+        const el = document.getElementById("q"+q);
+        const userAnswer = el ? el.value.trim() : "";
+        if (userAnswer.toLowerCase() === String(currentAnswers[key]).toLowerCase()){
+          correct++;
+          el.style.borderColor = "rgba(16,185,129,0.6)"; // green-ish
+        } else {
+          el.style.borderColor = "rgba(239,68,68,0.45)"; // red-ish
         }
         q++;
+      }
+
+      const endTime = new Date();
+      const totalSeconds = Math.floor((endTime - startTime) / 1000);
+
+      // Show result card
+      const rc = document.getElementById("resultContainer");
+      rc.innerHTML = `
+        <div class="card result" role="status" aria-live="polite">
+          <div>
+            <div class="badge">${correct} / 20</div>
+            <div class="small" style="margin-top:6px">Bahalaryň arasynda başgaça funksiýa gerek bolsa aýdyň.</div>
+          </div>
+          <div style="text-align:right">
+            <div class="meta">Gutardygy sagat: <strong>${endTime.toLocaleTimeString()}</strong></div>
+            <div class="meta">Test wagty: <strong>${totalSeconds} sek.</strong></div>
+            <div style="margin-top:8px">
+              <button onclick='saveResult(${correct},"${document.getElementById("testType").value}","${endTime.toISOString()}",${totalSeconds})'>Netijeni ýatda sakla</button>
+              <button class="secondary" onclick="clearSaved()">Ýatda saklanan öçür</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Save automatically small ephemeral last result in session (not overwrite saved)
+      sessionStorage.setItem("lastEphemeralResult", JSON.stringify({
+        score: correct,
+        timeISO: endTime.toISOString(),
+        secs: totalSeconds,
+        test: document.getElementById("testType").value
+      }));
+
+      // reset startTime to avoid accidental re-finish
+      startTime = null;
     }
 
-    const endTime = new Date();
-    const totalSeconds = Math.floor((endTime - startTime) / 1000);
+    function saveResult(score, testType, timeISO, secs){
+      const key = "testResults"; // array of saved results
+      let arr = [];
+      try {
+        arr = JSON.parse(localStorage.getItem(key) || "[]");
+      } catch(e){
+        arr = [];
+      }
+      arr.unshift({ score, testType, timeISO, secs });
+      // keep last 50
+      if (arr.length > 50) arr.length = 50;
+      localStorage.setItem(key, JSON.stringify(arr));
+      alert("Netije ýerli sakladyldy (localStorage).");
+    }
 
-    document.getElementById("resultArea").innerHTML =
-        `<div class='result'>
-            Netije: ${correct} / 20 bal<br>
-            Gutaran wagty: ${endTime.toLocaleTimeString()}<br>
-            Test wagty: ${totalSeconds} sekunt
-        </div>`;
-}
-</script>
+    function loadLast(){
+      // Try ephemeral first
+      const ep = sessionStorage.getItem("lastEphemeralResult");
+      if (ep){
+        const data = JSON.parse(ep);
+        alert(`Soňky tamamlanan test: ${data.test} — Bal: ${data.score}/20 — Wagt: ${new Date(data.timeISO).toLocaleTimeString()} — ${data.secs} sek.`);
+        return;
+      }
 
+      // else try persistent saved
+      const key = "testResults";
+      const arr = JSON.parse(localStorage.getItem(key) || "[]");
+      if (arr.length){
+        const last = arr[0];
+        alert(`Soňky saklanan netije: ${last.testType} — ${last.score}/20 — ${new Date(last.timeISO).toLocaleTimeString()} — ${last.secs} sek.`);
+        return;
+      }
+
+      alert("Saklanan netije ýok.");
+    }
+
+    function clearSaved(){
+      if (confirm("Saklanan ähli netijeleri öçürmek isleýärsiňizmi?")) {
+        localStorage.removeItem("testResults");
+        alert("Saklanan netijeler öçürildi.");
+      }
+    }
+
+    // Auto-start hint (optional)
+    // startTest(); // izlemek isleseňiz bet açylanda awtomat başladar
+  </script>
 </body>
 </html>
 

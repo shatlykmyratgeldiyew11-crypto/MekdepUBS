@@ -1,4 +1,4 @@
-/* ===========================
+/* ===========================/* ===========================
    TEST A soraglary
 =========================== */
 const testA = [
@@ -35,7 +35,7 @@ const testA = [
     // ÝDE
     {q:"15. Adama uky näme üçin gerek?", a:{a:"ösmek üçin", b:"semremek üçin", ç:"dynç almak üçin"}, correct:"ç"},
     {q:"16. 7–10 ýaşly okuwçy näçe sagat ýatmaly?", a:{a:"8", b:"9", ç:"10–11"}, correct:"ç"},
-    {q:"17. Bedenterbiýe näme üçin?", a:{a:"owadan bolmak üçin", b:"saglygyňy berkitmek üçin", ç:"bedeni taýýarlamak"}, correct:"b"},
+    {q:"17. Bedenterbiýe näme üçin?", a:{a:"owadan bolmak üçin", b:"saglygyňy berkitmek üçin", ç:"bedeni taýýar etmek"}, correct:"b"},
 
     // Math
     {q:"18. 390 – (240 + 100 : 2) =", a:{a:"200", b:"100", ç:"220"}, correct:"b"},
@@ -85,49 +85,78 @@ let startTime;
 
 function startTest(){
     const select = document.getElementById("testSelect").value;
-    currentTest = (select === "A") ? testA : testB;
+    currentTest = select === "A" ? testA : testB;
 
     const form = document.getElementById("testForm");
     form.innerHTML = "";
     startTime = new Date();
 
     currentTest.forEach((item, index)=>{
-        let html = `<div class='question'>
-            <h3>${item.q}</h3>`;
-
+        let html = `<div class='question'><h3>${item.q}</h3>`;
         for(let opt in item.a){
             html += `
-                <label>
-                    <input type="radio" name="q${index}" value="${opt}"> 
-                    ${opt}) ${item.a[opt]}
-                </label><br>
-            `;
+                <label><input type="radio" name="q${index}" value="${opt}"> 
+                ${opt}) ${item.a[opt]}</label><br>`;
         }
         html += `</div>`;
         form.innerHTML += html;
     });
 
-    form.innerHTML += `<button type="button" onclick="finishTest()">Testi tamamla</button>`;
+    form.innerHTML += `<button type="button" onclick="finishTest()">Testi Tamamla</button>`;
 }
 
 /* ===========================
-       NETIJE ÇYKARMAK
+       NETIJE + ÝALŇYŞLAR
 =========================== */
 function finishTest(){
     let correct = 0;
+    let wrongList = [];
 
     currentTest.forEach((item, index)=>{
         const checked = document.querySelector(`input[name="q${index}"]:checked`);
-        if(checked && checked.value === item.correct){
-            correct++;
+
+        if(checked){
+            if(checked.value === item.correct){
+                correct++;
+            } else {
+                wrongList.push({
+                    sorag: item.q,
+                    dogry: item.correct,
+                    variant: item.a[item.correct],
+                    yazan: checked.value
+                });
+            }
+        } else {
+            wrongList.push({
+                sorag: item.q,
+                dogry: item.correct,
+                variant: item.a[item.correct],
+                yazan: "Jogap ýok"
+            });
         }
     });
 
-    const end = new Date();
-    const seconds = Math.floor((end - startTime) / 1000);
+    const percent = Math.round((correct / currentTest.length) * 100);
 
-    document.getElementById("result").innerHTML =
-        `<b>Netije:</b> ${correct} / 20 bal<br>
-         <b>Gutaran wagty:</b> ${end.toLocaleTimeString()}<br>
-         <b>Test wagty:</b> ${seconds} sekunt`;
+    let html = `
+        <b>Dogry:</b> ${correct} / 20<br>
+        <b>Prosent:</b> ${percent}%<br><br>
+        <h3>Ýalňyş edilen soraglar:</h3>
+    `;
+
+    if(wrongList.length === 0){
+        html += "<p style='color:green;'><b👍 Ähli sorag dogry!</b></p>";
+    } else {
+        wrongList.forEach((w, i)=>{
+            html += `
+                <p><b>${i+1}) ${w.sorag}</b><br>
+                • Dogry jogap: <b>${w.dogry}) ${w.variant}</b><br>
+                • Seniň jogabyň: <span style="color:red;">${w.yazan}</span></p>
+            `;
+        });
+    }
+
+    document.getElementById("result").innerHTML = html;
 }
+
+
